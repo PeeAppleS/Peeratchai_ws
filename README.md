@@ -16,5 +16,16 @@ This is a ROS2 implementation of the ROS1 driver using the new serial driver loc
 6. `ros2 launch vesc_driver vesc_driver_node.launch.py`
 7. If prompted "permission denied" on the serial port: `sudo chmod 777 /dev/ttyACM0`
 # Peeratchai_ws
-# Peeratchai_ws
-# Peeratchai_ws
+
+ros2 run slam_toolbox sync_slam_toolbox_node --ros-args --params-file /home/raspberry/Peeratchai_ws/mapper_params_online_sync_Peeratchai.yaml
+
+ros2 run tf2_ros static_transform_publisher 0.1 0 0.2 0 0 0 base_link laser
+
+ros2 launch sllidar_ros2 sllidar_s1_launch.py 
+
+rviz2
+
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=false
+
+ros2 run nav2_map_server map_saver_cli -f /home/raspberry/Peeratchai_ws/maps
+//save map
